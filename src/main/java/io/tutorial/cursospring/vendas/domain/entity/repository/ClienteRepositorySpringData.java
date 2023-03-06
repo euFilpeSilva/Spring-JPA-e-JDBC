@@ -16,7 +16,7 @@ public interface ClienteRepositorySpringData extends JpaRepository<Cliente, Inte
 ////    SELECT c FROM Cliente c WHERE c.nome LIKE :nome
 //    List<Cliente> findByNomeLike(String cli);
 
-    @Query(" select c from Cliente c where c.nome like :nome ")
+    @Query(value = " select c from Cliente c where c.nome like '%:nome%' ", nativeQuery = true)
     List<Cliente> buscarPorNome( @Param("nome") String nome );
 
 //    mais um exemplo abaixo:
