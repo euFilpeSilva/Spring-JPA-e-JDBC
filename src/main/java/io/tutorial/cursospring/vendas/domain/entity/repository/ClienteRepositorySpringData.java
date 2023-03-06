@@ -3,6 +3,7 @@ package io.tutorial.cursospring.vendas.domain.entity.repository;
 import io.tutorial.cursospring.vendas.domain.entity.Cliente;
 import org.h2.command.dml.Select;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
@@ -16,7 +17,7 @@ public interface ClienteRepositorySpringData extends JpaRepository<Cliente, Inte
 ////    SELECT c FROM Cliente c WHERE c.nome LIKE :nome
 //    List<Cliente> findByNomeLike(String cli);
 
-    @Query(value = " select c from Cliente c where c.nome like '%:nome%' ", nativeQuery = true)
+    @Query(value = " select * from Cliente c where c.nome like '%:nome%' ", nativeQuery = true)
     List<Cliente> buscarPorNome( @Param("nome") String nome );
 
 //    mais um exemplo abaixo:
@@ -24,5 +25,11 @@ public interface ClienteRepositorySpringData extends JpaRepository<Cliente, Inte
 
 //    outro
     Cliente findOneByNome(String nome);
+
+//    pra fazer deleções devo utilizar a annotation @Modifying
+    @Query(value = " delete from Cliente c where c.nome = :nome ", nativeQuery = true)
+    @Modifying
+    void deleteByNome(String nome);
 }
+
 
