@@ -7,7 +7,7 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name = "produto")
+@Table(name = "pedido")
 public class Pedido {
 
     @Id
@@ -38,10 +38,10 @@ public class Pedido {
         this.itens = itens;
     }
 
-    @OneToOne(mappedBy = "pedido")
+    @OneToMany(mappedBy = "pedido")
     private List<ItemPedido> itens;
 
-    @Column(name = "total", length = 20, precision = 2)
+    @Column(name = "total", length = 20, precision = 3)
     private BigDecimal total;
 
     public Integer getId() {

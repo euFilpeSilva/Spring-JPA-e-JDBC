@@ -37,7 +37,6 @@ public class VendasApplication {
 			p.setCliente(clientes.findById(1).get());
 			p.setDataPedido( LocalDate.now() );
 			p.setTotal(BigDecimal.valueOf(100));
-
 			pedidos.save(p);
 
 			Cliente cliente = clientes.findClienteFetchPedidos(joao.getId());
