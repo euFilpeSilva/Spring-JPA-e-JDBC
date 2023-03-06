@@ -30,6 +30,9 @@ public interface ClienteRepositorySpringData extends JpaRepository<Cliente, Inte
     @Query(value = " delete from Cliente c where c.nome = :nome ", nativeQuery = true)
     @Modifying
     void deleteByNome(String nome);
+
+    @Query(value = " select c from Cliente c left join fetch c.pedidos where c.id = :id ", nativeQuery = true)
+    Cliente findClienteFetchPedidos( @Param("id") Integer id);
 }
 
 

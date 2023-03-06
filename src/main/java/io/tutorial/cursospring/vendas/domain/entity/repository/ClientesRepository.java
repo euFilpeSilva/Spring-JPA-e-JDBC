@@ -65,5 +65,7 @@ public class ClientesRepository {
                 .createQuery("from Cliente", Cliente.class)
                 .getResultList();
     }
+
+
 }
 

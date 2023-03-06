@@ -19,6 +19,14 @@ public class Pedido {
     @JoinColumn(name = "cliente_id")
     private Cliente cliente;
 
+    public LocalDate getDataPedido() {
+        return dataPedido;
+    }
+
+    public void setDataPedido(LocalDate dataPedido) {
+        this.dataPedido = dataPedido;
+    }
+
     @Column(name = "data_pedido")
     private LocalDate dataPedido;
 
@@ -53,5 +61,12 @@ public class Pedido {
     }
     public void setTotal(BigDecimal total) {
         this.total = total;
+    }
+
+    @Override
+    public String toString() {
+        return "Pedido{" +
+                "total=" + total +
+                '}';
     }
 }
