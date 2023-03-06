@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "produto")
@@ -20,6 +21,17 @@ public class Pedido {
 
     @Column(name = "data_pedido")
     private LocalDate dataPedido;
+
+    public List<ItemPedido> getItens() {
+        return itens;
+    }
+
+    public void setItens(List<ItemPedido> itens) {
+        this.itens = itens;
+    }
+
+    @OneToOne(mappedBy = "pedido")
+    private List<ItemPedido> itens;
 
     @Column(name = "total", length = 20, precision = 2)
     private BigDecimal total;
